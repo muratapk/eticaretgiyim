@@ -1,10 +1,11 @@
-﻿
+﻿@model List<eticaretgiyim.Models.Kullanicilar>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 <h1>Index</h1>
+<a asp-action="Create" asp-controller="Kullanici" class="btn btn-primary mb-3">Yeni</a>
 <table class="table table-bordered">
     <thead>
         <tr>
@@ -20,16 +21,20 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>Adı</td>
-            <td>Soyadı</td>
-            <td>E-Posta</td>
-            <td>Şifre</td>
-            <td>Telefon</td>
-            <td>Kayıt Tarihi</td>
-            <td>Rol</td>
-            <td>Düzeltme</td>
-            <td>Silme</td>
-        </tr>
+    @foreach(var row in Model)
+        {
+            <tr>
+                <td>@row.Ad</td>
+                <td>@row.Soyad</td>
+                <td>@row.Eposta</td>
+                <td>@row.SifreHash</td>
+                <td>@row.Telefon</td>
+                <td>@row.KayitTarihi</td>
+                <td>@row.Rol</td>
+                <td><a asp-action="Edit" asp-controller="Kullanici" asp-route-id="@row.KullaniciID" class="btn btn-success">Düzeltme</a></td>
+                <td><a asp-action="Delete" asp-controller="Kullanici" asp-route-id="@row.KullaniciID" class="btn btn-danger">Silme</a></td>
+            </tr>
+        }
+       
     </tbody>
 </table>

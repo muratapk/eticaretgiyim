@@ -7,6 +7,7 @@ namespace eticaretgiyim.Data
     {
         public GiyimDbContext(DbContextOptions<GiyimDbContext> options):base(options)
         { }
-        public DbSet<Kullanicilar>? Kullanicilars { get; set; }
+        public DbSet<Kullanicilar> ? kullanicilars { get; set; }
+        public DbSet<Kategoriler>? kategorilers { get; set; }
     }
 }
