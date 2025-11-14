@@ -14,5 +14,6 @@ namespace eticaretgiyim.Models
         [Required(ErrorMessage ="Açıklamayı Boş Bırakamazsınız")]
      
         public string Aciklama { get; set; } = string.Empty;
+        public ICollection<Urunler>? Urunlers { get; set; }
     }
 }

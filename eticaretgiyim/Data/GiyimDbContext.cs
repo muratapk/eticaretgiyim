@@ -9,5 +9,13 @@ namespace eticaretgiyim.Data
         { }
         public DbSet<Kullanicilar> ? kullanicilars { get; set; }
         public DbSet<Kategoriler>? kategorilers { get; set; }
+        public DbSet<Urunler>? urunlers { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Kategoriler>()
+                .HasMany(k => k.Urunlers)
+                .WithOne(u => u.Kategoriler)
+                .HasForeignKey(u => u.KategoriID);
+        }
     }
 }
