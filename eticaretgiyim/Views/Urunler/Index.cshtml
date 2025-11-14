@@ -1,0 +1,84 @@
+﻿@model IEnumerable<eticaretgiyim.Models.Urunler>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UrunAd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Aciklama)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fiyat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StokAdet)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Kategoriler)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Renk)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Beden)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GorselUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Aktif)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UrunAd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Aciklama)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fiyat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StokAdet)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Kategoriler.Aciklama)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Renk)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Beden)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GorselUrl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Aktif)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.UrunID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.UrunID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.UrunID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
