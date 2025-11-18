@@ -1,10 +1,17 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="wwwroot\Urun_Resim\**" />
+    <Content Remove="wwwroot\Urun_Resim\**" />
+    <EmbeddedResource Remove="wwwroot\Urun_Resim\**" />
+    <None Remove="wwwroot\Urun_Resim\**" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.22" />
@@ -21,7 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\Urun_Resim\" />
+    <Folder Include="wwwroot\Product_Image\" />
   </ItemGroup>
 
 </Project>

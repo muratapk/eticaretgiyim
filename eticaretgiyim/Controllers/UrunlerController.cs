@@ -58,8 +58,32 @@ namespace eticaretgiyim.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Create(Urunler urun)
+        public IActionResult Create(Urunler urun,IFormFile Picture)
         {
+            if(Picture != null && Picture.Length > 0)
+            {
+                var uzanti = Path.GetExtension(Picture.FileName).ToLower();   
+                //dosyanın uzantısını al
+                if(uzanti != ".jpg" && uzanti != ".png" && uzanti != ".jpeg")
+                {
+                    ModelState.AddModelError("Picture", "Sadece .jpg, .png ve .jpeg uzantılı dosyalar yüklenebilir.");
+                    ViewBag.Kategoriler = new SelectList(_context.kategorilers, "KategoriID", "KategoriAd");
+                    return View(urun);
+                    //tekrar view create e dön
+
+                }
+                var yenidosya = Guid.NewGuid().ToString() + uzanti;
+                //dosya adını benzersiz yap için guid kullan
+
+                var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Product_Image/", yenidosya);
+                //dosyayı kaydet kullanılacak yolu belirle
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    Picture.CopyTo(stream);
+                }
+                urun.GorselUrl = "/Product_Image/" + yenidosya;
+            }
+
             if (ModelState.IsValid)
             {
                 _context.urunlers.Add(urun);
@@ -70,8 +94,35 @@ namespace eticaretgiyim.Controllers
             return View(urun);
         }
         [HttpPost]
-        public IActionResult Edit(Urunler urun)
+        public IActionResult Edit(Urunler urun,IFormFile Picture)
         {
+
+            if (Picture != null && Picture.Length > 0)
+            {
+                var uzanti = Path.GetExtension(Picture.FileName).ToLower();
+                //dosyanın uzantısını al
+                if (uzanti != ".jpg" && uzanti != ".png" && uzanti != ".jpeg")
+                {
+                    ModelState.AddModelError("Picture", "Sadece .jpg, .png ve .jpeg uzantılı dosyalar yüklenebilir.");
+                    ViewBag.Kategoriler = new SelectList(_context.kategorilers, "KategoriID", "KategoriAd");
+                    return View(urun);
+                    //tekrar view create e dön
+
+                }
+                var yenidosya = Guid.NewGuid().ToString() + uzanti;
+                //dosya adını benzersiz yap için guid kullan
+
+                var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Product_Image/", yenidosya);
+                //dosyayı kaydet kullanılacak yolu belirle
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    Picture.CopyTo(stream);
+                }
+                urun.GorselUrl = "/Product_Image/" + yenidosya;
+            }
+
+
+
             if (ModelState.IsValid)
             {
                 _context.urunlers.Update(urun);

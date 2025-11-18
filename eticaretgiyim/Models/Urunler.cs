@@ -18,7 +18,9 @@ namespace eticaretgiyim.Models
         public string ? Renk { get; set; }
         public string ? Beden { get; set; }
         public  string ? GorselUrl  { get; set; }
-        public bool ? Aktif { get; set; }
+        public bool  Aktif { get; set; }
+        [NotMapped]
+        public IFormFile ? Picture { get; set; }
 
     }
 }

@@ -36,6 +36,7 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.GorselUrl)
+                
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Aktif)
@@ -68,7 +69,8 @@
                 @Html.DisplayFor(modelItem => item.Beden)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.GorselUrl)
+               
+                <img src="@item.GorselUrl" height="100px" width="100px"/>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Aktif)
