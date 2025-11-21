@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using eticaretgiyim.Data;
 
@@ -11,9 +12,11 @@ using eticaretgiyim.Data;
 namespace eticaretgiyim.Migrations
 {
     [DbContext(typeof(GiyimDbContext))]
-    partial class GiyimDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251121161325_yildizpaket")]
+    partial class yildizpaket
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -81,28 +84,6 @@ namespace eticaretgiyim.Migrations
                     b.HasKey("KullaniciID");
 
                     b.ToTable("kullanicilars");
-                });
-
-            modelBuilder.Entity("eticaretgiyim.Models.UrunYildiz", b =>
-                {
-                    b.Property<int>("YildizId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("YildizId"));
-
-                    b.Property<DateTime?>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int?>("UrunId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("YildizSayisi")
-                        .HasColumnType("int");
-
-                    b.HasKey("YildizId");
-
-                    b.ToTable("urunYildizs");
                 });
 
             modelBuilder.Entity("eticaretgiyim.Models.Urunler", b =>

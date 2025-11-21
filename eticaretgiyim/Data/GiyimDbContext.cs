@@ -10,6 +10,7 @@ namespace eticaretgiyim.Data
         public DbSet<Kullanicilar> ? kullanicilars { get; set; }
         public DbSet<Kategoriler>? kategorilers { get; set; }
         public DbSet<Urunler>? urunlers { get; set; }
+        public DbSet<UrunYildiz>? urunYildizs { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Kategoriler>()

@@ -46,16 +46,14 @@
 
         <div class="col-lg-7 pb-5">
             <h3 class="font-weight-semi-bold">@Model.UrunAd</h3>
+           <!--Partial Gelecek-->
             <div class="d-flex mb-3">
                 <div class="text-primary mr-2">
-                    <small class="fas fa-star"></small>
-                    <small class="fas fa-star"></small>
-                    <small class="fas fa-star"></small>
-                    <small class="fas fa-star-half-alt"></small>
-                    <small class="far fa-star"></small>
+                    @await Html.PartialAsync("_YildizRatingPartial",Model.UrunID)
                 </div>
-                <small class="pt-1">(50 Reviews)</small>
+                <small class="pt-1">(99 Değerlendirme)</small>
             </div>
+           <!--Partial Gelecek-->
             <h3 class="font-weight-semi-bold mb-4">@Model.Fiyat</h3>
             <p class="mb-4">@Model.Aciklama</p>
             <div class="d-flex mb-3">
