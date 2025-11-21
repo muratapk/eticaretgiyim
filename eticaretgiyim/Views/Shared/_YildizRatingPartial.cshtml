@@ -16,3 +16,37 @@
     .star { color: #ccc; }
     .star.selected { color: gold; }
 </style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    $(document).ready(function () {
+
+        var currentRating = parseInt($('.star-rating').data('current'));
+        //urunId numarası
+        highlightStars(currentRating);
+
+
+        $('.star').on('click', function () {
+            var rating = $(this).data('value');
+            //hangi yıldıza tıklarsam onun değeri
+            $('.star-rating-value').val(rating);
+            //burdaki içindeki star-rating value ata
+            highlightStars(rating);
+            // Optionally, you can send the rating to the server via AJAX here
+        });
+
+        //yıldız renklendirme
+        function highlightStars(rating) {
+            $('.star').each(function () {
+                var starValue = $(this).data('value');
+
+                if (starValue <= rating) {
+                    $(this).addClass('selected');
+                } else {
+                    $(this).removeClass('selected');
+                }
+            });
+        }
+        /////
+    });
+</script>
