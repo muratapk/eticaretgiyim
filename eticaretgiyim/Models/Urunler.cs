@@ -21,6 +21,7 @@ namespace eticaretgiyim.Models
         public bool  Aktif { get; set; }
         [NotMapped]
         public IFormFile ? Picture { get; set; }
+        public ICollection<Comments>? Comments { get; set; }
 
     }
 }
