@@ -9,7 +9,7 @@ namespace eticaretgiyim.Models
         public int CommentId { get; set; }
         [ForeignKey("UrunId")]
         public int ? UrunId { get; set; }
-        public Urunler urunler { get; set; }    
+        public Urunler? urunler { get; set; }    
         public string UserName { get; set; }=string.Empty;
         public string Content { get; set; }=string.Empty;
         public DateTime ? CreatedAt { get; set; }

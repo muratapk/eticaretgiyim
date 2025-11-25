@@ -17,16 +17,25 @@ namespace eticaretgiyim.Controllers
         }
         [HttpPost]
         public IActionResult Create(Comments gelen)
-        {   
-         
-           if (ModelState.IsValid)
+        {
+
+            if (ModelState.IsValid)
             {
                 gelen.CreatedAt = DateTime.Now;
                 _context.comments.Add(gelen);
                 _context.SaveChanges();
                 return RedirectToAction("UrunDetay", "Home", new { id = gelen.UrunId });
             }
-            return View("Index");
+            return RedirectToAction("UrunDetay", "Home", new { id = gelen.UrunId });
+        }
+        [HttpGet]
+        public IActionResult GetComments(int urunId)
+        {
+            var comments = _context.comments
+                .Where(c => c.UrunId == urunId)
+                .OrderByDescending(c => c.CreatedAt)
+                .ToList();
+            return PartialView("_CommentsPartial", comments);
         }
     }
 }
