@@ -212,6 +212,7 @@
                                     <input type="submit" value="Yorumu Gönder" class="btn btn-primary" />
                                 </div>
                            </form>
+                            @await Component.InvokeAsync("CommentsList", new { urunId = Model.UrunID })
                         </div>
                         <div class="col-md-6">
                             <h4 class="mb-4">Leave a review</h4>

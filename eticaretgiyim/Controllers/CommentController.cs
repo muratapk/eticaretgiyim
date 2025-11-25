@@ -13,8 +13,55 @@ namespace eticaretgiyim.Controllers
         }
         public IActionResult Index()
         {
+            var result=_context.comments.ToList();
+            return View(result);
+        }
+        [HttpGet]
+        public IActionResult Create()
+        {
             return View();
         }
+        [HttpPost]
+        public IActionResult Save(Comments gelen)
+        {
+            _context.comments.Add(gelen);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+           var result= _context.comments.Find(id);
+            return View(result);
+        }
+        [HttpPost]
+        public IActionResult Edit(Comments gelen)
+        {
+            _context.comments.Update(gelen);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        [HttpPost]
+        public IActionResult Delete(Comments gelen)
+        {
+            _context.comments.Remove(gelen);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            var result = _context.comments.Find(id);
+            return View(result);
+        }
+        [HttpGet]
+        public IActionResult Details(int id)
+        {
+            var result = _context.comments.Find(id);
+            return View(result);
+        }
+
         [HttpPost]
         public IActionResult Create(Comments gelen)
         {

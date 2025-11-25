@@ -1,0 +1,9 @@
+﻿@model IEnumerable<eticaretgiyim.Models.Comments>
+@foreach(var item in Model)
+{
+    <div class="comment">
+        <h4>@item.UserName</h4>
+        <p>@item.Content</p>
+        <span class="date">@item.CreatedAt</span>
+    </div>
+}
