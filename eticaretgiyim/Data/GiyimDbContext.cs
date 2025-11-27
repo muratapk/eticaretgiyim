@@ -1,9 +1,10 @@
 ﻿using eticaretgiyim.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace eticaretgiyim.Data
 {
-    public class GiyimDbContext:DbContext
+    public class GiyimDbContext:IdentityDbContext<AppUser,AppRole,int>
     {
         public GiyimDbContext(DbContextOptions<GiyimDbContext> options):base(options)
         { }
@@ -14,6 +15,8 @@ namespace eticaretgiyim.Data
         public DbSet<Comments>? comments { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
             modelBuilder.Entity<Kategoriler>()
                 .HasMany(k => k.Urunlers)
                 .WithOne(u => u.Kategoriler)

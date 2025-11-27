@@ -1,0 +1,62 @@
+﻿@model eticaretgiyim.Dto.appUserRegisterDto
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_homeLayout.cshtml";
+}
+
+
+<div class="container mt-5">
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Registration Form</h4>
+        </div>
+
+        <div class="card-body">
+            <form>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label class="form-label">First Name</label>
+                        <input type="text" class="form-control" name="firstname" asp-for="FirstName" placeholder="Enter first name">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">Last Name</label>
+                        <input type="text" class="form-control" name="lastname" asp-for="LastName" placeholder="Enter last name">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">City</label>
+                    <input type="text" class="form-control" name="city" asp-for="City" placeholder="Enter city">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-control" name="email" asp-for="Email" placeholder="Enter email">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Username</label>
+                    <input type="text" class="form-control" name="username" asp-for="UserName" placeholder="Enter username">
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-control" name="password" asp-for="Password" placeholder="Enter password">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">Confirm Password</label>
+                        <input type="password" class="form-control" name="confirmPassword" asp-for="ConfirmPassword" placeholder="Confirm password">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100">Register</button>
+
+            </form>
+        </div>
+    </div>
+</div>
+
