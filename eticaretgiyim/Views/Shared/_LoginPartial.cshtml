@@ -1,0 +1,31 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<AppUser> _signInManager
+@inject UserManager<AppUser> _userManager
+
+@if(_signInManager.IsSignedIn(User))
+{
+   
+
+
+
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                @User.Identities.First().Name
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="/Account/Index">Hesaplarım</a></li>
+                <li><a class="dropdown-item" href="/Home/Index">Siteye Git</a></li>
+                <li><a class="dropdown-item" href="/Logout/Index">Güvenli Çıkış/a></li>
+            </ul>
+        </div>
+
+                
+    
+}
+else
+{
+<div class="navbar-nav ml-auto py-0">
+    <a href="/Login/Index" class="nav-item nav-link">Login</a>
+    <a href="/Register/Index" class="nav-item nav-link">Register</a>
+</div>
+}

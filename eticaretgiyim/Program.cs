@@ -20,6 +20,13 @@ builder.Services.AddSession(options =>
     options.Cookie.IsEssential = true;
 });
 
+builder.Services.AddAuthentication("Cookies").AddCookie("Cookies", options =>
+{
+    options.LoginPath = "/Login/Index";
+    options.LogoutPath = "/Logout/Index";
+    options.AccessDeniedPath = "/Login/Index";
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
