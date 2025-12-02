@@ -14,13 +14,13 @@
                 return Price * Quantity;
             }
         }
-        public CartItem(long productId, string productName, int quantity, decimal price, string imageUrl)
+        public CartItem(Urunler product)
         {
-            ProductId = productId;
-            ProductName = productName;
-            Quantity = quantity;
-            Price = price;
-            ImageUrl = imageUrl;
+            ProductId = product.UrunID;
+            ProductName = product.UrunAd;
+            Quantity = 1;
+            Price =Convert.ToDecimal(product.Fiyat);
+            ImageUrl = product.GorselUrl;
         }
     }
 }

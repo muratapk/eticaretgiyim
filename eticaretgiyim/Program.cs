@@ -1,5 +1,7 @@
 using eticaretgiyim.Data;
+using eticaretgiyim.Interface;
 using eticaretgiyim.Models;
+using eticaretgiyim.Oturum;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,6 +21,11 @@ builder.Services.AddSession(options =>
     options.Cookie.HttpOnly = true;
     options.Cookie.IsEssential = true;
 });
+
+builder.Services.AddHttpContextAccessor();
+
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+builder.Services.AddScoped<ICartService, CartService>();
 
 builder.Services.AddAuthentication("Cookies").AddCookie("Cookies", options =>
 {
